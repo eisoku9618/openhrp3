@@ -386,6 +386,7 @@ void ModelLoaderHelper::createSensors(Link* link, const SensorInfoSequence& sens
             if(type == "Force")             { sensorType = Sensor::FORCE; }
             else if(type == "RateGyro")     { sensorType = Sensor::RATE_GYRO; }
             else if(type == "Acceleration")	{ sensorType = Sensor::ACCELERATION; }
+            else if(type == "Attitude")	{ sensorType = Sensor::ATTITUDE; }
             else if(type == "Vision")       { sensorType = Sensor::VISION; }
             else if(type == "Range")        { sensorType = Sensor::RANGE; }
 

@@ -22,6 +22,9 @@ namespace hrp
 
     HRP_UTIL_EXPORT void calcRodrigues(Matrix44& out_R, const Vector3& axis, double q);
     HRP_UTIL_EXPORT void calcTransformMatrix(VrmlTransform* transform, Matrix44& out_T);
+    template<class V> inline void setVector4(const Vector4& v4, V& v, size_t top = 0){
+        v[top++] = v4(0); v[top++] = v4(1); v[top] = v4(2); v[top] = v4(3);
+    }
 };
 
 #endif

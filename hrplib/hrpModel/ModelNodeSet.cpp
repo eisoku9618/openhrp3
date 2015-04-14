@@ -130,6 +130,9 @@ ModelNodeSetImpl::ModelNodeSetImpl(ModelNodeSet* self) : self(self)
         protoNameToInfoMap["AccelerationSensor"]
             = ProtoInfo(PROTO_SENSOR, &ModelNodeSetImpl::checkSensorProtoCommon);
         
+        protoNameToInfoMap["AttitudeSensor"]
+            = ProtoInfo(PROTO_SENSOR, &ModelNodeSetImpl::checkSensorProtoCommon);
+
         protoNameToInfoMap["VisionSensor"]
             = ProtoInfo(PROTO_SENSOR, &ModelNodeSetImpl::checkSensorProtoCommon);
         

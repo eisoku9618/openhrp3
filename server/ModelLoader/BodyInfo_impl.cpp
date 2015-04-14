@@ -517,6 +517,7 @@ void BodyInfo_impl::readSensorNode(int linkInfoIndex, SensorInfo& sensorInfo, Vr
         sensorTypeMap["ForceSensor"]        = "Force";
         sensorTypeMap["Gyro"]               = "RateGyro";
         sensorTypeMap["AccelerationSensor"] = "Acceleration";
+        sensorTypeMap["AttitudeSensor"] = "Attitude";
         sensorTypeMap["PressureSensor"]     = "";
         sensorTypeMap["PhotoInterrupter"]   = "";
         sensorTypeMap["VisionSensor"]       = "Vision";
@@ -555,6 +556,10 @@ void BodyInfo_impl::readSensorNode(int linkInfoIndex, SensorInfo& sensorInfo, Vr
             sensorInfo.specValues[5] = maxTorque[2];
             
         } else if(sensorType == "RateGyro") {
+            std::cerr << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahogehgoe" << std::endl;
+            std::cerr << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahogehgoe" << std::endl;
+            std::cerr << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahogehgoe" << std::endl;
+            std::cerr << "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaahogehgoe" << std::endl;
             sensorInfo.specValues.length( CORBA::ULong(3) );
             DblArray3 maxAngularVelocity;
             copyVrmlField(fmap, "maxAngularVelocity", maxAngularVelocity);
@@ -569,7 +574,15 @@ void BodyInfo_impl::readSensorNode(int linkInfoIndex, SensorInfo& sensorInfo, Vr
             sensorInfo.specValues[0] = maxAcceleration[0];
             sensorInfo.specValues[1] = maxAcceleration[1];
             sensorInfo.specValues[2] = maxAcceleration[2];
-            
+        } else if( sensorType == "Attitude" ){
+            sensorInfo.specValues.length( CORBA::ULong(4) );
+            DblArray3 maxHoge;
+            std::cerr << "hogehgoe" << std::endl;
+            copyVrmlField(fmap, "maxHoge", maxHoge);
+            sensorInfo.specValues[0] = maxHoge[0];
+            sensorInfo.specValues[1] = maxHoge[1];
+            sensorInfo.specValues[2] = maxHoge[2];
+            sensorInfo.specValues[3] = -1.0;
         } else if( sensorType == "Vision" ){
             sensorInfo.specValues.length( CORBA::ULong(7) );
 

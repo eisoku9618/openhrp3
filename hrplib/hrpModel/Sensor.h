@@ -18,6 +18,7 @@
 #include <iostream>
 #include <vector>
 #include <hrpUtil/Eigen3d.h>
+#include <hrpUtil/Eigen4d.h>
 #include "Config.h"
 
 namespace hrp {
@@ -33,6 +34,7 @@ namespace hrp {
             FORCE,
             RATE_GYRO,
             ACCELERATION,
+            ATTITUDE,
             PRESSURE,
             PHOTO_INTERRUPTER,
             VISION,
@@ -110,6 +112,21 @@ namespace hrp {
         typedef Eigen::Vector2d vector2;
         vector2 x[3]; 
         bool isFirstUpdate;
+    };
+
+    class HRPMODEL_API AttitudeSensor : public Sensor
+    {
+      public:
+        EIGEN_MAKE_ALIGNED_OPERATOR_NEW
+
+        static const int TYPE = ATTITUDE;
+
+        AttitudeSensor();
+
+        Vector4 quat;
+
+        virtual void clear();
+        virtual void putInformation(std::ostream& os);
     };
 
     class HRPMODEL_API RangeSensor : public Sensor

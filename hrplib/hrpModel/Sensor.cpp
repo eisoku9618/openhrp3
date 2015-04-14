@@ -40,6 +40,9 @@ Sensor* Sensor::create(int type)
     case ACCELERATION:
 		sensor = new AccelSensor();
 		break;
+    case ATTITUDE:
+		sensor = new AttitudeSensor();
+		break;
 
     case RANGE:
 		sensor = new RangeSensor();
@@ -157,6 +160,23 @@ void AccelSensor::putInformation(std::ostream& os)
 	os << "Acceleration Sensor\n";
 	Sensor::putInformation(os);
 	os << "dv = " << dv << std::endl;
+}
+
+AttitudeSensor::AttitudeSensor()
+{
+	type = ATTITUDE;
+}
+
+void AttitudeSensor::clear()
+{
+    quat.setZero();
+}
+
+void AttitudeSensor::putInformation(std::ostream& os)
+{
+	os << "Attitude\n";
+	Sensor::putInformation(os);
+	os << "quaternion = " << quat << std::endl;
 }
 
 RangeSensor::RangeSensor()
